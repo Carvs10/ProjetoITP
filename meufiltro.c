@@ -23,13 +23,13 @@ Imagem filtroPintura (Imagem original){
 	int raio= (int) gtk_range_get_value(GTK_RANGE(WidComprimento));
 	float intens = (float) gtk_range_get_value(GTK_RANGE(WidEspessura));
 	for(int y =raio; y<original.w-raio; y++){
-		for (int x = raio; x < original.h-raio; x++){
+		for (int x = intens; x < original.h-intens; x++){
 			int *sumR, *sumG, *sumB;
 			sumR = calloc(256,sizeof(int));
 			sumG = calloc(256,sizeof(int));
 			sumB = calloc(256,sizeof(int));
 			for (int y_0 =-raio; y_0<=raio;y_0++ ){
-				for (int x_0 =-raio; x_0<=raio;x_0++ ){
+				for (int x_0 =-intens; x_0<=intens;x_0++ ){
 					if(x+x_0<original.h && y+y_0<original.w && x+x_0>=0 && y+y_0>=0){
 						int r = original.m[x+x_0][y+y_0][0];
 						int g = original.m[x+x_0][y+y_0][1];
@@ -63,7 +63,7 @@ Imagem filtroPintura (Imagem original){
 				}
 			}
 			for (int y_0 =-raio; y_0<=raio;y_0++ ){
-				for (int x_0 =-raio; x_0<=raio;x_0++ ){
+				for (int x_0 =-intens; x_0<=intens;x_0++ ){
 					resultado.m[x+x_0][y+y_0][0] = tomR;
 					resultado.m[x+x_0][y+y_0][1] = tomG;
 					resultado.m[x+x_0][y+y_0][2] = tomB;
